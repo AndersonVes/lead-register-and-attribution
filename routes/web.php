@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\LeadsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +17,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [LeadsController::class, 'landingPage']);
+Route::get('/', [LandingPageController::class, 'landingPage']);
+
+Route::middleware('auth')->group(function () {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    
+    Route::prefix('leads')->group(function(){
+        Route::get('/{id}', [LeadsController::class,'show'])->name('show');
+    });
+
+});
 
 
 require __DIR__.'/auth.php';
+
+Auth::routes(['register' => false]);
+
