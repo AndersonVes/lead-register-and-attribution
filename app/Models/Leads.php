@@ -11,7 +11,7 @@ class Leads extends Model
 
     protected $table = 'leads';
     
-    protected $fillabe = [
+    protected $fillable  = [
         'name',
         'email',
         'phone',

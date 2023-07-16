@@ -18,18 +18,19 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [LandingPageController::class, 'landingPage']);
+Route::post('/leads/new', [LeadsController::class, 'store'])->name('new_lead');
+
+Route::get('/obrigado', [LandingPageController::class, 'thankYou'])->name('thank_you');
 
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     
-    Route::prefix('leads')->group(function(){
-        Route::get('/{id}', [LeadsController::class,'show'])->name('show');
+    Route::prefix('leads')->group(function () {
+        Route::get('/{id}', [LeadsController::class, 'show'])->name('show');
     });
-
 });
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Auth::routes(['register' => false]);
-
