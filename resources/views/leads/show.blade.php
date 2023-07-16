@@ -6,36 +6,42 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card">
-                    <div class="card-header">Lead #id</div>
+                    <div class="card-header">Lead</div>
                     <div class="card-body">
                         <div class="container">
                             <div class="row mt-3">
-                                <div class="col "><h5>Informações</h5></div>
+                                <div class="col ">
+                                    <h5>Informações</h5>
+                                </div>
                             </div>
                             <div class="row mt-1">
-                                <div class="col "><b>Nome: </b></div>
+                                <div class="col "><b>Nome: </b>{{ $lead->name }}</div>
                             </div>
                             <div class="row mt-1">
-                                <div class="col "><b>Email: </b></div>
-                                <div class="col "><b>Celular: </b></div>
+                                <div class="col "><b>Email: </b>{{ $lead->email }}</div>
+                                <div class="col "><b>Celular: </b>
+                                    <span class="mask-static-phone">{{ $lead->phone }}</span>
+                                </div>
                             </div>
                             <div class="row mt-3">
-                                <div class="col "><h5>Endereço</h5></div>
+                                <div class="col ">
+                                    <h5>Endereço</h5>
+                                </div>
                             </div>
                             <div class="row mt-1">
-                                <div class="col "><b>CEP: </b></div>
-                                <div class="col "><b>Cidade: </b>Cidade - UF</div>
+                                <div class="col "><b>CEP: </b>{{ $lead->cep }}</div>
+                                <div class="col "><b>Cidade: </b>{{ $lead->city }} - {{ $lead->state }}</div>
                             </div>
 
                             <div class="row mt-1">
-                                <div class="col "><b>Bairro: </b></div>
+                                <div class="col "><b>Bairro: </b>{{ $lead->neighborhood }}</div>
                             </div>
                             <div class="row mt-1">
-                                <div class="col"><b>Rua: </b></div>
-                                <div class="col"><b>Número: </b></div>
+                                <div class="col"><b>Rua: </b>{{ $lead->street }}</div>
+                                <div class="col"><b>Número: </b>{{ $lead->house_number }}</div>
                             </div>
                             <div class="row mt-1">
-                                <div class="col "><b>Complemento: </b></div>
+                                <div class="col "><b>Complemento: </b>{{ $lead->complement }}</div>
                             </div>
                             <div class="row mt-3">
                                 <div class="col ">
@@ -58,4 +64,7 @@
                 </div>
             </div>
         </div>
+
+        <script src="{{ url('/js/staticMasks.js') }}"></script>
+
     @endsection
