@@ -11,8 +11,11 @@ class LeadsController extends Controller
         
     }
 
-    public function landingPage()
+    public function show($id)
     {
-        return view('leads.landing-page');
+        $user = $id;
+        return view('leads.show',['user'=>$user]);
     }
+
+    
 }
