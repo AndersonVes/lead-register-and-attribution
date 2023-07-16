@@ -24,7 +24,7 @@
                 <div class="p1" style="width: 5em">
                     <img class="img-fluid" src="img/logo.webp" alt="" srcset="">
                 </div>
-                <h1 class="w-100 mt-3 text-center">the house</h1>
+                <h1 class="w-100 mt-3 text-center">HouseHunters</h1>
             </div>
 
             <h3>Obrigado por nos escolher!</h3>
@@ -39,9 +39,6 @@
                 by gpointstudio</a> on Freepik</span>
 
     </div>
-
-    <script src="js/masks.js"></script>
-    <script src="js/viacep.js"></script>
 </body>
 
 </html>

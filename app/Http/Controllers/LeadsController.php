@@ -2,21 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ProcessLead;
 use App\Models\Leads;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
 class LeadsController extends Controller
 {
-    public function listByUser()
+    public function index()
     {
+        $userId = auth()->user()->id;
+        $leads = Leads::where('user_id',$userId)->get();
+
+        return view('leads.index',['leads'=>$leads]);
     }
 
     public function show($id)
     {
-        $user = $id;
-        return view('leads.show', ['user' => $user]);
+        $lead = Leads::findOrFail($id);
+
+        if($lead->user_id != auth()->user()->id)
+            abort(403);
+
+
+        return view('leads.show', ['lead' => $lead]);
     }
 
     public function store(Request $request)
@@ -38,10 +49,14 @@ class LeadsController extends Controller
 
         try {
             $data = $request->all();
+            
             $data['phone'] = preg_replace('/[^0-9]/', '', $data['phone']);
             $data['cep'] = preg_replace('/[^0-9]/', '', $data['cep']);
+
             unset($data['_token']);
-            $data['user_id'] = 1;
+
+            $data['user_id']=User::nextToGetLead()->id;
+
             Leads::create($data);
         } catch (\Throwable $th) {
 

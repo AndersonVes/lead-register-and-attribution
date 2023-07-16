@@ -23,12 +23,12 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    {{ __('the house') }}
+                    {{ __('HouseHunters') }}
                 </a>
-
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                @auth
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0" @>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/home">Meus Leads</a>
+                        <a class="nav-link active" aria-current="page" href="/leads">Meus Leads</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="">Funil</a>
@@ -37,7 +37,7 @@
                         <a class="nav-link active" aria-current="page" href="/" target="_blank">Landing Page</a>
                     </li>
                 </ul>
-
+                @endif
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

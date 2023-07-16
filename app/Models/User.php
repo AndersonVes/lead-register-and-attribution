@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'last_lead_added_on'
     ];
 
     /**
@@ -41,4 +42,19 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function lead()
+    {
+        return $this->hasMany(Leads::class);
+    }
+
+    static public function nextToGetLead()
+    {
+        $user = User::orderBy('last_lead_added_on')->first();
+
+        $user->last_lead_added_on = now();
+        $user->save();
+
+        return $user;
+    }
 }

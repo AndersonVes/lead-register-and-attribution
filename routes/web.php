@@ -19,13 +19,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'landingPage']);
 Route::post('/leads/new', [LeadsController::class, 'store'])->name('new_lead');
-
 Route::get('/obrigado', [LandingPageController::class, 'thankYou'])->name('thank_you');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     
     Route::prefix('leads')->group(function () {
+        Route::get('/', [LeadsController::class, 'index'])->name('index');
         Route::get('/{id}', [LeadsController::class, 'show'])->name('show');
     });
 });
