@@ -55,7 +55,7 @@
                     <div class="col ">
                         <div class="form-group ">
                             <label class=" w-100" for="celular">Celular</label>
-                            <input required maxlength="15" minlength="14" type="text" id="form-celular" name="form-celular" class="form-control mask-phone"
+                            <input required pattern="^\(\d{2}\) \d{4,5}-\d{4}$" maxlength="15" type="text" id="form-celular" name="form-celular" class="form-control mask-phone"
                                 placeholder="(00) 00000-0000" />
 
                         </div>
@@ -65,7 +65,7 @@
                     <div class="col ">
                         <div class="form-group ">
                             <label class=" w-100" for="text">CEP</label>
-                            <input required placeholder="00000-000" id="form-cep" name="form-cep"
+                            <input required pattern="^\d{5}-\d{3}$" placeholder="00000-000" id="form-cep" name="form-cep"
                                 class="form-control viacep-cep mask-cep" type="text" />
 
                         </div>
@@ -85,7 +85,9 @@
                     <div class="col ">
                         <div class="form-group ">
                             <label class=" w-100" for="uf">UF</label>
-                            <input required type="text" maxlength="2" minlength="2" id="form-uf" name="form-uf" class="form-control viacep-uf" />
+                            <input required type="text" 
+                            pattern="^[A-Za-z]{2}$" 
+                            maxlength="2" id="form-uf" name="form-uf" class="form-control viacep-uf" />
 
                         </div>
                     </div>
@@ -150,6 +152,7 @@
     </div>
 
     <script src="js/masks.js"></script>
+    <script src="js/viacep.js"></script>
 </body>
 
 </html>
